@@ -1,0 +1,32 @@
+{
+    "name": "Random Quotes",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "icons": {
+        "16": "4.jpg",
+        "48": "3.jpg",
+        "128": "2.jpg"
+    },
+    "permissions": [
+        "activeTab",
+        "windows"
+    ],
+
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*"
+    ],
+    "action": {
+        "default_popup": "index.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["src/content.tsx"]
+        }
+    ]
+
+}
