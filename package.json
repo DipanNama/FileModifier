@@ -1,13 +1,14 @@
 {
-  "name": "random-quote",
+  "name": "stillroom",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "eslint src/App.tsx src/library.ts",
+    "preview": "vite preview",
+    "test": "node --experimental-strip-types --test tests/library.test.ts"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
@@ -16,11 +17,9 @@
     "lucide-react": "^0.473.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
-    "@crxjs/vite-plugin": "^2.0.0-beta.30",
     "@eslint/js": "^9.17.0",
     "@types/node": "^22.10.7",
     "@types/react": "^18.3.18",
@@ -33,6 +32,7 @@
     "globals": "^15.14.0",
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5"
