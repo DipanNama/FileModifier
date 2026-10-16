@@ -1,51 +1,25 @@
-# React + TypeScript + Vite
+# Stillroom
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A local-first reflection workspace built from this repository's unfinished Random Quotes React/TypeScript prototype. The repository name is historical; this is not a file modification utility.
 
-Currently, two official plugins are available:
+## Features
+- 12 original prompts across Focus, Work, Rest and Perspective, each with a reflection question. These are collection text, not quotations attributed to real people.
+- Search and topic filters, non-repeating shuffle when more than one result exists.
+- Saved collection on this device, copy, plain-text export and persistent light/dark theme.
+- Responsive layout, keyboard focus, reduced-motion support and empty states.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Saved items use localStorage, not an account. Clearing browser data removes them. No cross-device sync. When storage is blocked, saved items last only for the current session. Export before clearing data. This is a static app, not a wellness service or personalized advice.
 
-## Expanding the ESLint configuration
+## Development
+Node 24 is used in CI. `npm ci`, `npm test`, `npm run lint`, `npm run build`. `npm run dev` serves the app at `/FileModifier/`.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+`npm test` covers filtering, saved-data validation, shuffle boundaries and plain-text export. Production dependencies pass `npm audit --omit=dev` at release time. The legacy Tailwind 3 development toolchain still has transitive audit advisories (including brace-pattern parsing); it processes repository-controlled build inputs only. Do not expose the development server publicly or feed untrusted configurations/patterns to it. The public site serves built static assets, not these build tools.
 
-- Configure the top-level `parserOptions` property like this:
+## Deployment
+GitHub Pages via Actions, only on pushes to main. Work is done on a typed branch; tests/build and desktop/mobile checks run locally before one PR/squash merge. No preview or branch deployments. Workflow uses a main-only `github-pages` environment.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Historical extension
+The original manifest/background prototype remains in the repository for history, but is not loaded or built by this web release. It is incomplete, has unresolved paths, and is not an installable browser extension. The website does not request host permissions or inject scripts into websites.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# FileModifier
+## UI sources
+Existing shadcn/ui Button (Radix Slot) and Lucide icons. Component discovery: https://shoogle.dev/ and https://ui.shadcn.com/docs/components/button. No icon or image assets drawn for this app.
